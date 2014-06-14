@@ -1,0 +1,62 @@
+/*nesting*/
+/*this will turn all p's within a div to background-color: yellow*/
+div p {
+	background-color: yellow;
+}
+/*this will only turn the immediate children (one level deep) p's of a div to yellow*/
+div > p {
+  background-color: yellow;
+}
+/*note that for an added class attribute, nix the space like so */
+div.kittens {
+  background: url(http://placekitten.com/500/400);
+  background-size: 400px 300px;
+  background-repeat: no-repeat;
+}
+
+/*Psuedo classes in CSS*/
+/*allow you to add special effects to some selectors (classes, id's, etc)*/
+:link
+:visited
+:active
+:hover
+:focus
+::first-letter
+::first-line
+:first-child
+::before
+::after
+:lang 
+
+/*Stylesheet styles*/
+/*Nested*/
+html,
+body {
+  margin: 0;
+  padding: 0; }
+  div.kittens {
+    background: url(placekitten.cometc);
+    background-size: 40px 40px; }
+      ul {
+        list-style: none }
+
+/*Expanded*/
+html body {
+  margin: 0;
+  padding: 0;
+}
+div.kittens {
+  background: url(placekitten.cometc);
+  background-size: 40px 40px;
+}
+ul {
+  list-style: none;
+}
+
+/*Compact*/
+html body { margin: 0; padding: 0; }
+div.kittens etc. 
+
+/*Compressed (for computers only) */
+html body{margin:0;padding:0;}div.kittens{etc}
+

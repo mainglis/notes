@@ -1,0 +1,25 @@
+// variables
+$grey: #909090;
+
+body { background-color: $grey; }
+
+// partials
+  // name the file beginning w/ an underscore, so in _reset.scss:
+  html,
+  body,
+  ul,
+  ol {
+    margin: 0;
+    padding: 0;
+  }
+
+  // and in base.scss (the main file)
+  @import 'reset';
+
+// mixin
+@mixin border-radius {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-ms-border-radius: $radius;
+	border-radius: $radius;
+}
