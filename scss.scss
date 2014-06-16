@@ -16,10 +16,53 @@ body { background-color: $grey; }
   // and in base.scss (the main file)
   @import 'reset';
 
-// mixin
+// mixin using variable! hah
 @mixin border-radius {
 	-webkit-border-radius: $radius;
 	-moz-border-radius: $radius;
 	-ms-border-radius: $radius;
 	border-radius: $radius;
+} 
+// invoke the mixin using @include
+section.main {
+  @include border-radius;
+}
+
+// mixin's can take arguments that we pass to them, so for title-style mixin like this;
+@mixin title-style($color) {
+  margin: 0 0 20px 0;
+  font-family: $font-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: $color; 
+}
+// you can also do multiple arguments! so:
+@mixin title-style($color, $background) {
+  ...
+  color: $color;
+  background: $background;
+} 
+// so call it using @include again
+section.main h2 {
+  @include title-style(#c63, #eee);
+}
+
+// the @extend property allows us to reuse styling rules
+// like so you can extend the alert class into alert-positive
+.alert-positive {
+  @extend .alert;
+  background: #9c3;
+}
+// you can do multiple extends, too
+// you can also create placeholder selectors, meant for classes that will only ever
+// be used in extends. they use the % sign
+%button {
+  padding: 10px;
+  font-weight: bold;
+  background: blue;
+  border-radius: 6px;
+}
+// call it
+.buy {
+  @extend %button;
 }
