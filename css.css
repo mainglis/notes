@@ -60,3 +60,17 @@ div.kittens etc.
 /*Compressed (for computers only) */
 html body{margin:0;padding:0;}div.kittens{etc}
 
+/*Descendent selectors*/
+/*This will match all selector2's that have an ancestor element of selector1.*/
+/*Similar to child selectors but the descendent selector does not require a strict parent-child relationship*/
+/*https://developer.mozilla.org/en-US/docs/Web/CSS/Descendant_selectors/*/
+selector1 selector2 {
+  background-color: blue;
+}
+/*Child selectors*/
+/*This will match only the elements matched by the second selector that are direct children */
+/*of elements matched by the first selector*/
+/*https://developer.mozilla.org/en-US/docs/Web/CSS/Child_selectors*/
+selector1 > selector2 {
+  background-color: yellow;
+}

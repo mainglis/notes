@@ -121,5 +121,34 @@ JavaScript
 Angular
 ==============
 
+Directives
+----------
+Directives allow you to add interactivity to your HTML elements by attaching event listeners to the elements and/or transforming the DOM. ng-model, ng-repeat, and ng-show are all very common directive examples, but you can also write your own. An Angular directive comes in four flavors in terms of appearance. 
+
+1. A new HTML element ( <date-picker></date> )
+2. An attribute on an element ( <input type="text" date-picker/> )
+3. As a class ( <input type="text" class="date-picker" /> )
+4. As comment ( <!--directive:date-picker--> )
+
+Best Practice: Prefer using directives via tag name and attributes over comment and class names. Doing so generally makes it easier to determine what directives a given element matches.
+
+Best Practice: Prefer using the dash-delimited format (e.g. ng-bind for ngBind). If you want to use an HTML validating tool, you can instead use the data-prefixed version (e.g. data-ng-bind for ngBind). x- or data- will make your code HTML5 compliant. 
+
+Directives are registered the same way as a controller, but it returns a simple object that has several properties to configure the directive. 
+
+		restrict – This provides a way to specify how a directive should be used in HTML (remember a directive can appear in four ways). In this case we have set it to 'AE'. So, the directive can be used as a new HTML element or an attribute. To allow this directive to be used as a class we can set restrict to 'AEC'.
+
+		template – This specifies the HTML markup that will be produced when the directive is compiled and linked by Angular. This does not have to be a simple string. The template can be complex, often involving other directives, expressions ({{ }}), etc. In most cases you want to use templateUrl instead of template. So, ideally you should place the template in a separate HTML file and make templateUrl point to it.
+
+		replace – This specifies if the generated template will replace the HTML element on which the directive is attached. In our case we have used the directive as <hello-world></hello-world>, and replace is set to true. So, after the directive is compiled, the produced output template replaces <hello-world></hello-world>. The final output is <h3>Hello World!!</h3>. If you set replace to false, the default, the output template will be inserted into the element on which the directive is invoked.
+
+A directive inherits it's parent's scope. SO if a directive is present inside a controller, it will use that controller's scope. 
+
+Transclusion
+------------
+Translusion is a feature that lets us wrap a directive aound arbitrary content. 
+translude: true
+then ng-transclude on an element will append that element 
+
 Node
 ==============
