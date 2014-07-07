@@ -1,6 +1,13 @@
 Notes
 =====
 
+WebSockets
+----------
+The WebSocket specification defines an API establishing "socket" connections between a web browser and a server. Plainly speaking: There is a persistent connection between the client and the server and both parties can start sending data at any time. This is well-suited for low latency applications (applications that need to have a quick response/no lag time). Previous solutions revolved around the request/response paradigm of HTTP, where a client loads up a webpage and nothing happens until the user clicks onto the next page. In 2005, AJAX started making the web feel more dynamic but still the HTTP communication was steered by the client, requiring user interaction or periodic polling to load new data from the server.
+
+
+"Push" or "Comet" are names for technologies that enable the server to send data to the client in the very moment when it knows that new data is available. Long polling is a common hack to create the illusion of a server initated connection. With long polling, the client opens up an HTTP connection to the server which keeps it open until sending response. When the server actually ahs new data it sends the response... this works but it shares the problem of carrying the overhead of HTTP.
+
 Text Measurements
 ==============
 Scalable
@@ -26,8 +33,21 @@ Naturally inline elements include:
 
 Block level elements default to being 100% width of their parent element. Giving an element width: 100%; and adding padding will actually push the child element outside of the parent element's bounds. This is annoying with elements like textarea that needs to use the width property if you want to avoid the cols parameter (?). 
 
+SVG vs. HTML Canvas
+-------------------
+SVG is to images what HTML is to text. SVG (Scalable Vector Graphics) is a XML markup language for describing/drawing 2-D vector graphics. It can either create an image from scratch by specifying all the lines and shapes necessary, or it can modify an already existing raster image, or it can combine both approaches. 
+
+The HTML5 <canvas> element is used to draw graphics on the fly via scripting (most often, JavaScript). The <canvas> element is only a container for graphics. 
+
+SVG is considered more accessible b/c it supports text. HTML canvas is dependent on JavaScript, which is only a bad thing if a user has disabled their JavaScript. SVG is vector-based (go figure) and Canvas is pixel-based.
+
 CSS
 ==============
+
+Including a CSS file is NOT done like this:
+			<style type="text/css" href="style.css"></style>
+But rather it's done like this (in head): 
+			<link rel="stylesheet" type="text/css" href="style.css">
 
 Vendor Prefixes
 --------------
@@ -117,9 +137,28 @@ You can specify within the command how you want Sass to output your CSS. Normal 
 
 JavaScript
 ==============
+Core
+----
+There are 4 patterns of function invocation, and they all differ in how 
+the special 'this' parameter is initiatlized.
+1. Method Invocation Pattern: when a function is stored as a property of an object, we call it a method, and when a method is invoked, this is bound to that object. The binding of this to the object happens at invocation time, which is very late and makes functions that use this highly reusable. Mthods that get their object context from this are called public methods. 
+
+2. Function Invocation Pattern
+WHAT?!? Only necessary b/c of global binding, a mistake in the language...
+
+3. Constructor Invocation Pattern
+Not recommended, but when you use them, it's suggested that you capitalize the first letter. They're meant to be invoked with "new" like so: var myQuo = new Quo("confused");
+
+4. Apply Invocation Pattern
+The apply method lets us construct an array of arguments to use to invoke a function. It also lets us choose the value of this. The apply method takes two parameters, the first is the value that should be bound to this and the second is an array of parameters. 
 
 Angular
 ==============
+Modules
+-------
+A module acgs as a container for other AngularJS managed objects (controllers, services, etc). The module function call takes two arguments, the first being the name of the controller and the second being dependencies, put in an array.
+
+A call to the angular.module function retruns an instance of a newly created module. As soon as one has access to that instance, one can start defining controllers with the following arguments: controller's name and controlller's contructor function. 
 
 Directives
 ----------

@@ -49,9 +49,24 @@ app.directive('helloWorld', function() {
 // The restrict option lets you say how your directives will be triggered. It's default
 // setting is to attribute only ('A'). 'E' is for element, 'C' is for class name. 
 // Transclusion
-
 		restrict: 'E',
 		translude: true,
 		template: <div class="panel" ng-transclude>This is a panel component</div>
-
 // ng-transclude says where to put the transcluded content.
+
+// Angular modules - a basic example of a controller module
+angular.module('hello', [])
+	.controller('HelloCtrl', function($scope) {
+		$scope.name = 'world';
+	});
+
+angular.module('hithere', [])
+	.directive('hithere', function(notesFactory) {
+		return {
+			restrict: 'AE',
+			scope: {}, // this means the scope is isolated, aka the directive can be reusable 
+			link: function(scope, elem, attrs) {
+			},
+			templateUrl: 'templateurl.html'
+		};
+	});
